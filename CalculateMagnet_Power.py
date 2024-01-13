@@ -13,12 +13,15 @@
 
 import numpy as np
 
-def calculate(C, H, MH, R, T):
+def calculate(C, MH, R, T):
     
     # Variables (mm)
-    # C = Core Radius
-    # H = Coil Height
-    # MH = Magnet Height
+    # C = emag_core_rad
+    # H = Coil Height; coil height = magnet height - estimated shell thickness
+        # we are assuming for now that the shell thickness on the sides matches the shell thickenss at the base
+        # so i took out the input variable
+    H = MH - T
+    # MH = emag_height
     # R = Coil Outer Radius
     # T = Shell Thickness
     
