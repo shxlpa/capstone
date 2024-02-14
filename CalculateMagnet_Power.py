@@ -85,7 +85,7 @@ if __name__ == '__main__':
             "emag_rad":	[12.7,	20,	25,	25.4,	38.1,	44.45],
             "emag_shell_thick": [1.39,	2,	2.145,	2.947,	3.963,	5.317]
             }
-    
+
     cases = {1: "EM2519M5-1",	2: "EM401820M5-1",	3: "EM502027M5-1",	4: "EM5041M6-1",	5: "EM7650M6-1",	6: "EM8838M6-1"}
     
     for i in range(0,6):
@@ -93,7 +93,7 @@ if __name__ == '__main__':
        MH = magnet_data["emag_height"][i]
        R = magnet_data["emag_rad"][i]
        T = magnet_data["emag_shell_thick"][i]
-       Q = 90 # based on motor driver choice
+       Q = 8 # based on motor driver choice
        I, N, Q, M = calculate(C, MH, R, T, Q)
        print("Magnet ", i + 1, "- ", cases[i + 1])
        print("I [amps] = ", I)
