@@ -1,9 +1,17 @@
 #include "DualG2HighPowerMotorShield.h"
 
-DualG2HighPowerMotorShield24v14 md;
+DualG2HighPowerMotorShield18v18 md;
 
 void stopIfFault()
 {
+  // if (md.getM2Fault())
+  // {
+  //   md.disableDrivers();
+	// delay(1);
+  //   Serial.println("M2 fault");
+  //   while (1);
+  // }
+
   if (md.getM1Fault())
   {
     md.disableDrivers();
@@ -23,7 +31,7 @@ void setup()
   delay(10);
 
   // Uncomment to flip a motor's direction:
-  //md.flipM1(true);
+  md.flipM1(true);
 }
 
 void loop()
