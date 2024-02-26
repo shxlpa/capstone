@@ -1,3 +1,8 @@
+// Feb 25, 2024
+// Shilpa Rao 
+// raoshilpa@g.ucla.edu 
+// Driver + force sensor integrated control file for one teensy
+
 #include <DualG2HighPowerMotorShield.h>
 #include <Wire.h>
 #include "MS5837.h"
