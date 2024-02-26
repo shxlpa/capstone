@@ -7,12 +7,12 @@
 
 #include <Arduino.h>
 
-class DualG2HighPowerMotorShield
+class DualG2_Shilpa
 {
   public:
     // CONSTRUCTORS
-    DualG2HighPowerMotorShield();
-    DualG2HighPowerMotorShield(unsigned char M1nSLEEP,
+    DualG2_Shilpa();
+    DualG2_Shilpa(unsigned char M1nSLEEP,
                                unsigned char M1DIR,
                                unsigned char M1PWM,
                                unsigned char M1nFAULT,
@@ -45,6 +45,8 @@ class DualG2HighPowerMotorShield
     void calibrateCurrentOffsets();
     unsigned int getM1CurrentMilliamps(int gain);
     unsigned int getM2CurrentMilliamps(int gain);
+    // unsigned int getM1CurrentMilliamps(); // Get current reading for M1.
+    // unsigned int getM2CurrentMilliamps(); // Get current reading for M2.
 
   protected:
     unsigned int _offsetM1;
@@ -68,34 +70,10 @@ class DualG2HighPowerMotorShield
 
 };
 
-class DualG2HighPowerMotorShield24v14 : public DualG2HighPowerMotorShield
+class DualG2_Shilpa18v18 : public DualG2_Shilpa
 {
   public:
-    using DualG2HighPowerMotorShield::DualG2HighPowerMotorShield;
-    unsigned int getM1CurrentMilliamps(); // Get current reading for M1.
-    unsigned int getM2CurrentMilliamps(); // Get current reading for M2.
-};
-
-class DualG2HighPowerMotorShield18v18 : public DualG2HighPowerMotorShield
-{
-  public:
-    using DualG2HighPowerMotorShield::DualG2HighPowerMotorShield;
-    unsigned int getM1CurrentMilliamps(); // Get current reading for M1.
-    unsigned int getM2CurrentMilliamps(); // Get current reading for M2.
-};
-
-class DualG2HighPowerMotorShield24v18 : public DualG2HighPowerMotorShield
-{
-  public:
-    using DualG2HighPowerMotorShield::DualG2HighPowerMotorShield;
-    unsigned int getM1CurrentMilliamps(); // Get current reading for M1.
-    unsigned int getM2CurrentMilliamps(); // Get current reading for M2.
-};
-
-class DualG2HighPowerMotorShield18v22 : public DualG2HighPowerMotorShield
-{
-  public:
-    using DualG2HighPowerMotorShield::DualG2HighPowerMotorShield;
+    using DualG2_Shilpa::DualG2_Shilpa;
     unsigned int getM1CurrentMilliamps(); // Get current reading for M1.
     unsigned int getM2CurrentMilliamps(); // Get current reading for M2.
 };
