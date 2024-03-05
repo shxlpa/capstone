@@ -1,3 +1,8 @@
+// Setup & loop functions for custom designed current sensor PCB with the following integrated circuits:
+  // Texas Instr. INA240 –4-V to 80-V, Bidirectional, Ultra-Precise Current Sense Amplifier With Enhanced PWM Rejection
+  // Texas Instr. ADS117L11 400-kSPS Wide-Bandwidth, 16-Bit Delta-Sigma ADC
+  // Texas Instr. REF4132 Low-Drift, Low-Power, Small-Footprint Series Voltage Reference
+
 // SPI pin setup
 #include <SPI.h>
 
@@ -24,59 +29,6 @@ const int GAIN2 = 0xC;
 const int GAIN1 = 0xD;
 const int GAIN0 = 0xE;
 const int CRC = 0xF;
-
-void setup() {
-
-  // SPI communication setup
-  // SPI configuration and SPI.begin stuff
-  SPI.begin();
-  SPI.beginTransaction(SPISettings(400000, MSBFIRST, SPI_MODE1)); // MSB or LSB first? 
-  pinMode(cs, OUTPUT);
-  digitalWrite(cs, HIGH);
-  // start Serial over usb to computer
-  Serial.begin(115200);
-  while (!Serial)
-  {
-    // wait until the serial port is opened
-  }
-
-  delay(100); // give the sensor time to set up. 5/9/23: unsure whether I actually need this
-
-}
-
-void loop() {
-
-  // Serial.println("Loop started");
-  // start();
-
-  // Don't print reading from buf unles prompted by user. 
-    // This will be useful for eventually implementing the reading inside our master control loop.
-  // if(Serial.available()) {
-    // read something in
-    char in = Serial.read(); // in must be one of the ID's above
-    // Serial.println("Serial is available");
-    start();
-    // Make a bunch of cases that you want to test
-    // switch(in) {
-    //   case 'start':
-    //     start(in);
-    //     break;
-    //   case 'stop':
-    //     stop();
-    //     break;
-    //   default:
-    //     Serial.println("Unknown command");
-    // }
-
-  // }
-
-}
-
-void start() {
-  // Function to run for testing
-  // Serial.println("Initiating read protocol");
-  readReg();
-}
 
 void stop() {
   // Function to run for testing
@@ -128,5 +80,58 @@ void readReg() {
   // Serial.println();
   Serial.print("Current: ");
   Serial.println(buf[1] + buf[2], DEC);
+
+}
+
+void start() {
+  // Function to run for testing
+  // Serial.println("Initiating read protocol");
+  readReg();
+}
+
+void currSetup() {
+
+  // SPI communication setup
+  // SPI configuration and SPI.begin stuff
+  SPI.begin();
+  SPI.beginTransaction(SPISettings(400000, MSBFIRST, SPI_MODE1)); // MSB or LSB first? 
+  pinMode(cs, OUTPUT);
+  digitalWrite(cs, HIGH);
+  // start Serial over usb to computer
+  Serial.begin(115200);
+  while (!Serial)
+  {
+    // wait until the serial port is opened
+  }
+
+  delay(100); // give the sensor time to set up. 5/9/23: unsure whether I actually need this
+
+}
+
+void currLoop() {
+
+  // Serial.println("Loop started");
+  // start();
+
+  // Don't print reading from buf unles prompted by user. 
+    // This will be useful for eventually implementing the reading inside our master control loop.
+  // if(Serial.available()) {
+    // read something in
+    char in = Serial.read(); // in must be one of the ID's above
+    // Serial.println("Serial is available");
+    start();
+    // Make a bunch of cases that you want to test
+    // switch(in) {
+    //   case 'start':
+    //     start(in);
+    //     break;
+    //   case 'stop':
+    //     stop();
+    //     break;
+    //   default:
+    //     Serial.println("Unknown command");
+    // }
+
+  // }
 
 }
