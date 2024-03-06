@@ -28,7 +28,7 @@ void setup()
   mdSetup(md);
   ////////////////////////////////
         // Current Sensor Setup
-  currSetup();
+  // currSetup();
 
 }
 
@@ -40,18 +40,23 @@ void loop()
     delay(1); // driver needs 1 ms to warm up
     i++;
   }
-  // Multiplexor/force sensor loop
-  forceLoop();
 
-  // Motor Driver Loop
+  // Motor Driver FORCE TEST 3/6/24 (must run fastest)
     // observation: the motor driver NEEDS the delay to operate.
-  mdLoop(md);
+  mdLoopForceTest(md); // MD loop calls force loop so that we can map a force reading to the pwm
 
-  currLoop();
+  // Multiplexor/force sensor loop
+  // if (i%1 == 0) { // run 50% of the time
+  //   forceLoop();
+  // }
 
-  delay(10);
+  // if (i%4 == 0) {
+  //   // currLoop(); // run 25% of the time
+  // }
 
   i++;
+
+  delay(10);
 
 }
 
