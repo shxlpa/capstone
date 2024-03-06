@@ -78,8 +78,10 @@ void readReg() {
   // Serial.println(buf[2]);
   // Serial.println("Ending read protocol");
   // Serial.println();
-  Serial.print("Current: ");
-  Serial.println(buf[1] + buf[2], DEC);
+
+  
+  // Serial.print("Current: ");
+  // Serial.println(buf[1] + buf[2], DEC);
 
 }
 

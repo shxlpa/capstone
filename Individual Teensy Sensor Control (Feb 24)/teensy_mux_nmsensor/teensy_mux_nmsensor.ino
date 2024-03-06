@@ -81,10 +81,13 @@ void loop() {
   pres3 = sensor3.pressure();
   temp3 = sensor3.pressure();
 
-  Serial.println("NEW PACKET:");
-  Serial.println(pres0);
-  Serial.println(pres1);
-  Serial.println(pres2);
+  //Serial.println("NEW PACKET:");
+  Serial.print(pres0);
+  Serial.print(",");
+  Serial.print(pres1);
+  Serial.print(",");
+  Serial.print(pres2);
+  Serial.print(",");
   Serial.println(pres3);
 
   delay(1);

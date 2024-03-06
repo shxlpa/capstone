@@ -46,19 +46,28 @@ void forceLoop() {
   pres3 = sensor3.pressure();
   temp3 = sensor3.pressure();
 
-  Serial.println("Forces ");
-  Serial.print("1: ");
+  // Serial.println("Forces ");
+  // Serial.print("1: ");
+  // Serial.print(pres0);
+  // Serial.print(", ");
+  // Serial.print("2: ");
+  // Serial.print(pres1);
+  // Serial.print(", ");
+  // Serial.print("3: ");
+  // Serial.print(pres2);
+  // Serial.print(", ");
+  // Serial.print("4: ");
+  // Serial.print(pres3);
+  // Serial.println(", ");
+
   Serial.print(pres0);
-  Serial.print(", ");
-  Serial.print("2: ");
+  Serial.print(",");
   Serial.print(pres1);
-  Serial.print(", ");
-  Serial.print("3: ");
+  Serial.print(",");
   Serial.print(pres2);
-  Serial.print(", ");
-  Serial.print("4: ");
-  Serial.print(pres3);
-  Serial.println(", ");
+  Serial.print(",");
+  Serial.println(pres3);
+
 
 }
 

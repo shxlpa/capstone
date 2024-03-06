@@ -32,13 +32,13 @@ void setup()
 
 }
 
-bool firstStart = true;
+int i = 0;
 void loop()
 {
 
-  if (firstStart == true) {
+  if (i == 0) {
     delay(1); // driver needs 1 ms to warm up
-    firstStart = false;
+    i++;
   }
   // Multiplexor/force sensor loop
   forceLoop();
@@ -50,6 +50,8 @@ void loop()
   currLoop();
 
   delay(10);
+
+  i++;
 
 }
 
