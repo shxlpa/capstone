@@ -27,24 +27,32 @@ void mdLoopForceTest(DualG2HighPowerMotorShield18v18 md) {
   md.enableDrivers();
   delay(1);  // The drivers require a maximum of 1ms to elapse when brought out of sleep mode.
 
-  for (int i = 0; i <= 400; i++)
-  {
-    md.setM1Speed(i);
-    stopIfFault(md);
-    // if (i%200 == 100)
-    // {
-    //   // Serial.print("M1 current: ");
-    //   // Serial.println(md.getM1CurrentMilliamps());
-	  // }
-    // delay(1); // give capsule time to reach esophagus wall before we record it
+  md.setM1Speed(400);
+  stopIfFault(md);
+  forceLoop();
+  delay(100);
+  md.setM1Speed(0);
+  stopIfFault(md);
+  forceLoop();
+  delay(100);
+  // for (int i = 0; i <= 400; i++)
+  // {
+  //   md.setM1Speed(i);
+  //   stopIfFault(md);
+  //   // if (i%200 == 100)
+  //   // {
+  //   //   // Serial.print("M1 current: ");
+  //   //   // Serial.println(md.getM1CurrentMilliamps());
+	//   // }
+  //   // delay(1); // give capsule time to reach esophagus wall before we record it
 
-    if (i%4 == 0) { // speed it up 4x by only recording force every pwm change of n*4
-      Serial.print(i);
-      Serial.print(",");
-      forceLoop();
-    }
+  //   if (i%4 == 0) { // speed it up 4x by only recording force every pwm change of n*4
+  //     Serial.print(i);
+  //     Serial.print(",");
+  //     forceLoop();
+  //   }
 
-  }
+ // }
 
   delay(1000);
 

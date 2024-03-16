@@ -3,7 +3,9 @@ from datetime import datetime
 import csv
 
 #Open a csv file and set it up to receive comma delimited input
-logging = open('/Users/raoshilpa/Desktop/capstone-1/forceDist0.csv',mode='a')
+placeholder = 'placeholder' # to prevent from overwriting files
+filename = '/Users/raoshilpa/Desktop/capstone-1/3.13.24_ForceTests/' + placeholder + '.csv'
+logging = open(filename,mode='a')
 writer = csv.writer(logging, delimiter=",", escapechar=' ', quoting=csv.QUOTE_NONE)
 
 #Open a serial port that is connected to an Arduino (below is Linux, Windows and Mac would be "COM4" or similar)
