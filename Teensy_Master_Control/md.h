@@ -20,6 +20,15 @@ void stopIfFault(DualG2HighPowerMotorShield18v18 md)
     Serial.println("M1 fault");
     while (1);
   }
+
+  if (md.getM2Fault())
+  {
+    md.disableDrivers();
+	delay(1);
+    Serial.println("M2 fault");
+    while (1);
+  }
+
 }
 
 void mdLoopForceTest(DualG2HighPowerMotorShield18v18 md) {
@@ -28,10 +37,12 @@ void mdLoopForceTest(DualG2HighPowerMotorShield18v18 md) {
   delay(1);  // The drivers require a maximum of 1ms to elapse when brought out of sleep mode.
 
   md.setM1Speed(400);
+  md.setM2speed(0);
   stopIfFault(md);
   forceLoop();
   delay(100);
   md.setM1Speed(0);
+  md.setM2Speed(400);
   stopIfFault(md);
   forceLoop();
   delay(100);
@@ -70,6 +81,10 @@ void mdLoopForceTest(DualG2HighPowerMotorShield18v18 md) {
 
   md.disableDrivers(); // Put the MOSFET drivers into sleep mode.
   // delay(500);
+}
+
+void mdBothLoop(DualG2HighPowerMotorShield18v18 md) {
+  
 }
 
 void mdSetup(DualG2HighPowerMotorShield18v18 md) {

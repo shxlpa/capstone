@@ -36,25 +36,18 @@ int i = 0;
 void loop()
 {
 
+  // Keep track of iterations
   if (i == 0) {
     delay(1); // driver needs 1 ms to warm up
     i++;
   }
-
-  // Motor Driver FORCE TEST 3/6/24 (must run fastest)
-    // observation: the motor driver NEEDS the delay to operate.
-  mdLoopForceTest(md); // MD loop calls force loop so that we can map a force reading to the pwm
-
-  // Multiplexor/force sensor loop
-  // if (i%1 == 0) { // run 50% of the time
-  //   forceLoop();
-  // }
-
-  // if (i%4 == 0) {
-  //   // currLoop(); // run 25% of the time
-  // }
-
   i++;
+
+  mdBothLoop(md);
+
+  // Motor Driver FORCE TEST 3/6/24 // 3/13/24 (must run fastest)
+    // observation: the motor driver NEEDS the delay to operate.
+  // mdLoopForceTest(md); // MD loop calls force loop so that we can map a force reading to the pwm
 
   delay(10);
 

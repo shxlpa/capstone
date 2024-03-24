@@ -45,17 +45,17 @@ void readReg() {
   buf[1] = 0x40 + CONTROL;
   buf[2] = 0x00;
 
-  // Serial.print("buf[0] = ");
-  // Serial.print(buf[0]);
-  // Serial.print(", buf[1] = ");
-  // Serial.print(buf[1]);
-  // Serial.print(", buf[2] = ");
-  // Serial.print(buf[2], DEC);
-  // Serial.println();
+  Serial.print("buf[0] = ");
+  Serial.print(buf[0]);
+  Serial.print(", buf[1] = ");
+  Serial.print(buf[1]);
+  Serial.print(", buf[2] = ");
+  Serial.print(buf[2], DEC);
+  Serial.println();
 
-  // Serial.print("Current: ");
-  // Serial.println(buf[1] + buf[2], DEC);
-  // buf[1] = 0x40 + DEV_ID + 0x40
+  Serial.print("Current: ");
+  Serial.println(buf[1] + buf[2], DEC);
+  buf[1] = 0x40 + DEV_ID + 0x40;
 
   int numBytes = 3; // number of bytes in the packet
 
@@ -67,21 +67,21 @@ void readReg() {
   SPI.transfer(buf, numBytes); // overwrites buf
   delay(10);
   digitalWrite(cs, HIGH);
-  // Serial.println("Buffer overwritten");
+  Serial.println("Buffer overwritten");
 
   // Print out the elements of buf
-  // Serial.print("buf[0] = ");
-  // Serial.print(buf[0]);
-  // Serial.print(", buf[1] = ");
-  // Serial.print(buf[1]);
-  // Serial.print(", buf[2] = ");
-  // Serial.println(buf[2]);
-  // Serial.println("Ending read protocol");
-  // Serial.println();
+  Serial.print("buf[0] = ");
+  Serial.print(buf[0]);
+  Serial.print(", buf[1] = ");
+  Serial.print(buf[1]);
+  Serial.print(", buf[2] = ");
+  Serial.println(buf[2]);
+  Serial.println("Ending read protocol");
+  Serial.println();
 
   
-  // Serial.print("Current: ");
-  // Serial.println(buf[1] + buf[2], DEC);
+  Serial.print("Current: ");
+  Serial.println(buf[1] + buf[2], DEC);
 
 }
 
